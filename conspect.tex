@@ -533,4 +533,139 @@ $A =
 	& & \square
 	\end{matrix}
 	\right)$ --- очевидно.
+\subsection{Операторы простой структуры. Проекторы. Спектральные разложения о.п.с. Функция от матрицы.}
+\Def : $A \in End(V)$ \newline
+$A$ называется оператором простой структуры, если $\exists$ базис пространства $V$, такой что матрица оператора имеет диагональный вид $\Lambda = diag(\lambda_1, \ldots, \lambda_n) = 
+	\left(
+	\begin{matrix}
+		\lambda_1 & \ldots & 0 \\
+		\vdots & \ddots & \vdots \\
+		0 & \ldots & \lambda_n
+	\end{matrix}
+	\right) \Leftrightarrow \exists$ базис $V$ из собственных векторов $A$ $\Leftrightarrow V = \bigoplus\limits_{\lambda \text{- с.ч. } A} V_{\lambda}$ \newline
+$\lambda_i$ собственное число \newline
+$A v_i = \lambda_i v_i$ \newline
+$V = span(v_1, \ldots, v_n)$
+\begin{theorem*}
+$\sqsupset$ $\sum\limits_{\lambda \text{ с.ч. } A} \alpha(\lambda) = n = dim V \Leftrightarrow $ все корни $\chi(t) \in K \Leftrightarrow$ все корни $\chi(t)$ являются с.ч. $A$. 
+\end{theorem*}
+\bfline{Док-во}: $A$ оператор простой структуры $\Leftrightarrow V = \bigoplus\limits_{\lambda \text{ с.ч.}} V_{\lambda} \Leftrightarrow n = dimV = \sum\limits_{\lambda \text{ с.ч.}} \gamma(\lambda) =  \sum\limits_{\lambda \text{ с.ч.}} \alpha(\lambda) \Rightarrow \forall \lambda: \gamma(\lambda) = \alpha(\lambda)$, $1 \leq \gamma(\lambda) \leq \alpha(\lambda)$. \newline
+\bfline{Следствие 1}: $\sum\limits_{\lambda \text{ с.ч.}} \alpha(\lambda) = n = dim V$ \newline
+$A$ о.п.с $\Leftarrow$ спектр простой ($n$ попарно различных собственных чисел).
+\Def : $A_{n \times n}$ называется диагонализируемой, если $\exists$ невырожденная $T_{n \times n}: T^{-1} A T = \Lambda = diag(\lambda_1, \ldots, \lambda_n)$ ($A$ подобно диагональной матрице). \newline
+\bfline{Следствие 2}: Если матрица $A_{n \times n}$ --- матрица некоторого о.п.с $A$, то она диагонализируема. И обратно, любая диагонализируемая матрица является матрицой о.п.с. в некотором базисе. \newline
+\bfline{Док-во}: $\underset{(e_1, \ldots, e_n) \text{ базис } A}{A} \leftrightarrow A$ --- о.п.с. $\Leftrightarrow$ $\exists$ базис $v_1, \ldots, v_n$ с.в., $\lambda_1, \ldots, \lambda_n$ с.ч. $\leftrightarrow$ $\Lambda = 
+	\left(
+	\begin{matrix}
+		\lambda_1 & \ldots & 0 \\
+		\vdots & \ddots & \vdots \\
+		0 & \ldots & \lambda_n
+	\end{matrix}
+	\right)$ \newline
+$T = T_{e \rightarrow v}$ невырожденная \newline
+$\Lambda = T^{-1} A T$ \newline
+$A = T \Lambda T^{-1}$ $\blacksquare$ \newline
+$A$ --- диагонализ. $\Leftrightarrow$ $\sum\limits_{\lambda \text{ с.ч.}} \alpha(\lambda) = n$ $\forall \lambda$ с.ч. $\gamma(\lambda) = \alpha(\lambda)$ \newline
+\Def : $V = \bigoplus\limits_{i=1}^{m} L_i \Leftrightarrow \forall v \in V$ $\exists !: v = \sum\limits_{i=1}^{m} V_i \in L_i$ \newline
+$\rho_i : V \rightarrow L_i \subset V$, $L_i \subset V$ линейное подпространство \newline
+$\forall v \in V$ $\rho_i v := v_i$ --- оператор проектирования, $i=1\ldots m$. \newline
+$\rho_i \in End(V)$ (доказывается расписыванием $\rho_i (u + \lambda v)$) \newline
+\bfline{Свойства проекторов}:
+\begin{enumerate}
+	\item $\forall i \neq j$ $\rho_i \rho_j = 0$
+	\item $\forall i: {\rho_i}^2 = \rho_i$ ($\Rightarrow \forall k \in \mathbb{N}\ {\rho_i}^k = \rho_i$)
+	\item $\sum\limits_{i=1}^{n} = \varepsilon$
+	\item $Ker \rho_i = \sum\limits_{i \neq j} L_j$ \newline
+		$Im\ \rho_i = L_i$
+\end{enumerate}
+\bfline{Док-во}:
+\begin{enumerate}
+	\item $\forall v \in V$ $\rho_i \rho_j (v) = \rho_i \underset{\in L_j}{V_j} = 0$, т.к. $L_i$ дизъюнктны \newline
+	\item $\forall v \in V$ $\rho_i \underset{v_i \in L}{\underbrace{\rho_i(v)}} = v_i = \rho_i v$, т.к. верно для $\forall v \in V$, то и для базиса $\Rightarrow$ оператор совпадает $\rho_i \rho_i = \rho_i$
+	\item $\forall v \in V$ $\left( \sum\limits_{i=1}^{m} \rho_i \right)v = \sum\limits_{i=1}^{m} \rho_i v = \sum\limits_{i=1}^{m} v_i = v = \varepsilon v \Rightarrow \ldots \Rightarrow \sum\limits_{i=1}^{m} \rho_i = \varepsilon$
+	\item $\rho_i (v_1 + \ldots + v_{i-1} + v_{i+1} + \ldots + v_m) = 0$ \newline
+		$\sum\limits_{j \neq i} L_j \subset Ker \rho_i$, т.к. $V = \bigoplus\limits_{j \neq i} L_j \oplus L_i \Rightarrow Ker \rho_i = \bigoplus\limits_{j \neq i} L_j$  \newline
+		$Im\ \rho_i = L_i$ по построению $\subset$ \newline
+		верно $\supset$ $\forall v_i \in L_i \leadsto \underset{\underset{\rho_{v_i} = v_i}{||}}{v_i} \in V$
+\end{enumerate}
+\bfline{Утв}: $\underset{i=1\ldots m}{\rho_i} : V \rightarrow V$ и выполн. свойства $1^{\circ}$, $3^{\circ}$ $\Rightarrow$ $V = \bigoplus\limits_{i=1}^{m} Im\ \rho_i$ (т.е. проекторы на $L_i=Im\ \rho_i$). \newline
+\bfline{Док-во}:
+\begin{enumerate}
+	\item если выполнены $1^{\circ}$, $3^{\circ}$, то и выполнено $2^{\circ}$. $\rho_i \rho_i = \rho_i$ ? \newline
+		$\rho_i = \rho_i \varepsilon = \rho_i \sum\limits_{i=1}^{m} \rho_i = \sum\limits_{j=1}^{m} \rho_i \rho_j = \rho_i \rho_i$
+	\item $V_1 + V_2 + \ldots + V_m = 0$ \newline
+		$V_i \in Im \rho_i$ дизъюнктны \newline
+		$V_i = \rho_i w_i$, $W_i \in V$ \newline
+		$V_i = \rho_i \varepsilon w_i = \rho_i \left( \sum\limits_{j=1}^{m} \rho_j w_i \right) = \left( \sum\limits_{j=1}^{m} \rho_j \rho_j \right) w_i$
+\end{enumerate}
+\begin{theorem*}{о спектральном разложении о.п.с.}
+$V = \bigoplus\limits_{\lambda \text{ с.ч.}} V_{\lambda}$, $\rho_{\lambda}: V \rightarrow V_{\lambda}$ \newline
+$A$ о.п.с. $\Leftrightarrow$ $A = \sum\limits_{\lambda \text{ с.ч.}} \lambda \rho_{\lambda}$ $\leftarrow$ спектральный проектор
+\end{theorem*}
+\bfline{Док-во}:
+\begin{enumerate}
+	\item[$1^{\circ}$] $\rho_{\lambda} \rho_{\mu} = 0, \lambda \neq \mu$
+	\item[$2^{\circ}$] $\rho_{\lambda}^2 = \rho_{\lambda}$
+	\item[$3^{\circ}$] $\sum\limits_{\lambda \text{ с.ч.}} \rho_{\lambda} = \varepsilon$
+\end{enumerate}
+$\forall v \in V$, $Av = A\left( \sum\limits_{\lambda} V_{\lambda} \right) = \sum\limits_{\lambda \text{ с.ч.}} \underset{\lambda V_{\lambda}}{\underbrace{A V_i}} = \sum\limits_{\lambda \text{ с.ч.}} \lambda V_{\lambda} = \sum\limits_{\lambda \text{ с.ч.}} \lambda \rho_{\lambda} v$. Доказательство верно $\forall v \in V$, в частности, для базиса. \newline
+\bfline{Следствие}: $A_{n \times n}$ диагонал. $\Leftrightarrow$ $\exists P_{\lambda} : 1^{\circ}, 2^{\circ}, 3^{\circ}$ \newline
+$A = \sum\limits_{\lambda \text{ с.ч.}} \lambda P_{\lambda}$ \newline
+$\underset{\in Im \rho_1}{v_1} + \ldots + \underset{\in Im \rho_m}{v_m} = 0 \Rightarrow v_i = \rho_i w_i$ \newline
+$v_i = \rho_i w_i \overset{(1)}{=} \rho_i \underset{0}{\underbrace{\left( \sum\limits_{j=1}^{m} \underset{v_j}{\underbrace{\rho_j w_j}} \right)}}=0$ \newline
+$(1) \sum\limits_{j=1}^{m} \underset{\neq 0}{\underbrace{\rho_i (\rho_j}} w_j) = \rho_i^2 w_i = \rho_i w_i$ \newline
+\Def : $(A_k) = \left((a_{ij}^k) \right)_{k=1}^{\infty}$ посл. матрица \newline
+$\exists \lim\limits_{k\rightarrow \infty} A_k = A=(a_{ij}) \Leftrightarrow \exists\ \forall(i, j) a_{ij} = \lim\limits_{k\rightarrow \infty} a_{ij}^{k}$ \newline
+$\underset{\text{сумма}}{\underbrace{\sum\limits_{m=1}^{\infty} A_m}} = \exists \lim\limits_{N\rightarrow \infty} \underset{\text{частичная сумма}}{\underbrace{\sum\limits_{m=1}^{N} A_m}}$ \newline
+$f(x)$ аналитична в $|x| < R$ $\Leftrightarrow$ $f(x) = \sum\limits_{m=0}^{\infty} C_m x^m$, $C_m = \frac{f^{(m)} (a)}{m!}$ \newline
+\Def : функция от матрицы $A_{n \times n}$ \newline
+$f(A) = \sum\limits_{m=0}^{\infty} C_m a^m$, $C_m = \frac{f^{(m)}(0)}{m!}$ \newline
+$f(x) = \sum\limits_{m=1}^{\infty} C_m x^m$ \newline
+$e^A = \sum\limits_{m=0}^{\infty} \frac{A^m}{m!}$
+\begin{theorem*}
+$f$ аналитична в $|x| < R$ \newline
+$A_{n \times n}$ все с.ч. $|\lambda| < R$ \newline
+$A$ диагонализируема $! \exists T: \Lambda = T^{-1} A T$, $\exists p_{\lambda}: A = \sum\limits_{\lambda} \lambda p_{\lambda}$
+\begin{enumerate}
+	\item $\exists f(A) = T
+		\left(
+		\begin{matrix}
+			f(\lambda_1) & \ldots & 0 \\
+			\vdots & \ddots & \vdots \\
+			0 & \ldots & f(\lambda_n)
+		\end{matrix}
+		\right) T^{-1}$
+	\item $f(A) = \sum\limits_{\lambda \text{ с.ч.}} f(\lambda) p_{\lambda}$
+\end{enumerate}
+\end{theorem*}
+\bfline{Док-во}:
+\begin{enumerate}
+	\item $f(A) = \sum\limits_{m=0}^{\infty} C_m A^m$ \newline
+		$A^m = {(T \Lambda T^{-1})}^m = T \Lambda \underset{E}{\underbrace{T^{-1} T}} \Lambda \ldots \underset{E}{\underbrace{T^{-1} T}} \Lambda T^{-1} = T \Lambda^m T^{-1} = T
+		\left(
+		\begin{matrix}
+			\lambda_1^m & \ldots & 0 \\
+			\vdots & \ddots & \vdots \\
+			0 & \ldots & \lambda_n^m
+		\end{matrix}
+		\right) T^{-1}$ \newline
+		$f(A) = \sum\limits_{m=0}^{\infty} C_m T \Lambda^m T^{-1} = T\left( \sum\limits_{m=0}^{\infty} C_m \Lambda^m \right) T^{-1} = $ \newline
+		$=T
+		\left(
+		\begin{matrix}
+			\sum\limits_{m=0}^{\infty} C_m \lambda_1^m & \ldots & 0 \\
+			\vdots & \ddots & \vdots \\
+			0 & \ldots & \sum\limits_{m=0}^{\infty} C_m \lambda_n^m
+		\end{matrix}
+		\right) T^{-1} = T
+		\left(
+		\begin{matrix}
+			f(\lambda_1) & \ldots & 0 \\
+			\vdots & \ddots & \vdots \\
+			0 & \ldots & f(\lambda_n)
+		\end{matrix}
+		\right) T^{-1}$
+	\item $A^m = {\left( \sum\limits_{\lambda} \lambda P_{\lambda} \right)}^m = \sum\limits_{\lambda} \lambda^m P_{\lambda}$ \newline
+		$f(A) = \sum\limits_{m=0}^{\infty} C_m \left( \sum\limits_{\lambda} \lambda^m P_{\lambda} \right) = \sum\limits_{\lambda} \left( \sum\limits_{m=0}^{\infty} C_m \lambda^m \right) P_{\lambda} = \sum\limits_{\lambda} f(\lambda) P_{\lambda}$
+\end{enumerate}
 \end{document}
